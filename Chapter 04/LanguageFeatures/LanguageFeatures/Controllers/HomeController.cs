@@ -17,6 +17,7 @@ namespace LanguageFeatures.Controllers {
             Product myProduct = new Product();
 
             // set the property value
+            myProduct.ProductID = 364728; // random number
             myProduct.Name = "Kayak";
 
             // get the property
@@ -24,20 +25,20 @@ namespace LanguageFeatures.Controllers {
 
             // generate the view
             return View("Result",
-                (object)String.Format("Product name: {0}", productName));
+                        (object)$"Product name: {productName}");
         }
 
         public ViewResult CreateProduct() {
 
             // create a new Product object
             Product myProduct = new Product {
-                ProductID = 100, Name = "Kayak",
-                Description = "A boat for one person",
-                Price = 275M, Category = "Watersports"
-            };
+                                                ProductID = 100, Name = "Kayak",
+                                                Description = "A boat for one person",
+                                                Price = 275M, Category = "Watersports"
+                                            };
 
             return View("Result",
-                (object)String.Format("Category: {0}", myProduct.Category));
+                (object)$"Category: {myProduct.Category}, Product: {myProduct.Name}");
         }
 
         public ViewResult CreateCollection() {
@@ -46,7 +47,9 @@ namespace LanguageFeatures.Controllers {
             List<int> intList = new List<int> { 10, 20, 30, 40 };
 
             Dictionary<string, int> myDict = new Dictionary<string, int> {
-                { "apple", 10 }, { "orange", 20 }, { "plum", 30 }
+                { "apple", 10 },
+                { "orange", 20 },
+                { "plum", 30 }
             };
 
             return View("Result", (object)stringArray[1]);
@@ -91,7 +94,7 @@ namespace LanguageFeatures.Controllers {
 
             // get the total value of the products in the cart
             decimal cartTotal = products.TotalPrices();
-            decimal arrayTotal = products.TotalPrices();
+            decimal arrayTotal = productArray.TotalPrices();
 
             return View("Result",
                 (object)String.Format("Cart Total: {0}, Array Total: {1}",

@@ -1,16 +1,15 @@
 ﻿namespace LanguageFeatures.Models {
 
     public class Product {
-        private string name;
-
         public int ProductID { get; set; }
 
+        private string _name;
         public string Name {
             get {
-                return ProductID + name;
+                return $"{_name} (Id={ProductID})";
             }
             set {
-                name = value;
+                _name = value;
             }
         }
 
