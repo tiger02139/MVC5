@@ -114,8 +114,7 @@ namespace LanguageFeatures.Controllers {
 
             decimal total = 0;
 
-            foreach (Product prod in products
-                    .Filter(prod => prod.Category == "Soccer" || prod.Price > 20)) {
+            foreach (Product prod in products.Filter(prod => prod.Category == "Soccer" || prod.Price > 20)) {
                 total += prod.Price;
             }
             return View("Result", (object)String.Format("Total: {0}", total));
