@@ -1,6 +1,7 @@
-﻿namespace EssentialTools.Models {
-
-    public class Product {
+﻿namespace EssentialTools.Models
+{
+    public class Product
+    {
         public int ProductID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
