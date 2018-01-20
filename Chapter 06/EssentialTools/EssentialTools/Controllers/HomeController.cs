@@ -14,11 +14,13 @@ namespace EssentialTools.Controllers {
             new Product {Name = "Corner flag", Category = "Soccer", Price = 34.95M}
         };
 
-        public HomeController(IValueCalculator calcParam/*, IValueCalculator calc2*/) {
+        public HomeController(IValueCalculator calcParam)
+        {
             calc = calcParam;
         }
 
-        public ActionResult Index() {
+        public ActionResult Index()
+        {
 
             ShoppingCart cart = new ShoppingCart(calc) { Products = products };
 
