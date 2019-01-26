@@ -22,6 +22,7 @@ namespace SportsStore.WebUI.Controllers {
                             .OrderBy(x => x);
 
             return PartialView("FlexMenu", categories);
+            //return PartialView("Menu", categories);
         }
 
     }

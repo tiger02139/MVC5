@@ -1,16 +1,57 @@
 ﻿@model IEnumerable<string>
 
+@*
 @Html.ActionLink("Home", "List", "Product", null,
     new { @class = "btn btn-block btn-default btn-lg" })
+*@
 
+@*
+Refactoring the Home link to see if Html.RouteLink works as well as Html.ActionLink    
+*@
+@Html.RouteLink("Home",
+                new
+                {
+                    controller = "Product",
+                    action = "List",
+                    //category = null,
+                    page = 1
+                },
+                new { @class = "btn btn-block btn-default btn-lg" })
+
+@*
 @foreach (var link in Model) {
-    @Html.RouteLink(link, new {
-        controller = "Product",
-        action = "List",
-        category = link,
-        page = 1
-    }, new {
-        @class = "btn btn-block btn-default btn-lg"
-            + (link == ViewBag.SelectedCategory ? " btn-primary" : "")
+    @Html.RouteLink(link, 
+                    new {
+                        controller = "Product",
+                        action = "List",
+                        category = link,
+                        page = 1
+                    }, 
+                    new {
+                        @class = "btn btn-block btn-default btn-lg"
+                                    + (link == ViewBag.SelectedCategory ? " btn-primary" : "")
     })
+}
+*@
+
+@*
+    Refactoring the Category links to see if Html.ActionLink works as well as Html.RouteLink
+*@
+@foreach (var link in Model)
+{
+    @Html.ActionLink(link,
+                     "List",
+                     "Product",
+                     new
+                     {
+                         category = link,
+                         page = 1
+                     },
+                     new
+                     {
+                         @class = "btn btn-block btn-default btn-lg"
+                                  + (link == ViewBag.SelectedCategory ? " btn-primary" : "")                         
+                     }
+                     
+    )
 }
