@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Net.Mail;
 using System.Text;
 using SportsStore.Domain.Abstract;
@@ -51,12 +52,14 @@ namespace SportsStore.Domain.Concrete {
 
                 foreach (var line in cart.Lines) {
                     var subtotal = line.Product.Price * line.Quantity;
-                    body.AppendFormat("{0} x {1} (subtotal: {2:c}", line.Quantity,
+                    body.AppendFormat("{0} x {1} (subtotal: {2:c}){3}", line.Quantity,
                                       line.Product.Name,
-                                      subtotal);
+                                      subtotal,
+                                      Environment.NewLine);
                 }
+                body.AppendLine("---");
 
-                body.AppendFormat("Total order value: {0:c}", cart.ComputeTotalValue())
+                body.AppendFormat("Total order value: {0:c}{1}", cart.ComputeTotalValue(), Environment.NewLine)
                     .AppendLine("---")
                     .AppendLine("Ship to:")
                     .AppendLine(shippingInfo.Name)
