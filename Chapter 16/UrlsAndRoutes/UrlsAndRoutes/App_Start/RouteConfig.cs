@@ -11,17 +11,17 @@ namespace UrlsAndRoutes {
 
             routes.MapMvcAttributeRoutes();
 
-            routes.IgnoreRoute("Content/{filename}.html");
+            //routes.IgnoreRoute("Content/{filename}.html");
 
-            routes.Add(new Route("SayHello", new CustomRouteHandler()));
+            //routes.Add(new Route("SayHello", new CustomRouteHandler()));
 
-            routes.Add(new LegacyRoute(
-                    "~/articles/Windows_3.1_Overview.html",
-                    "~/old/.NET_1.0_Class_Library"));
+            //routes.Add(new LegacyRoute(
+            //        "~/articles/Windows_3.1_Overview.html",
+            //        "~/old/.NET_1.0_Class_Library"));
 
+            //routes.MapRoute("MyOtherRoute", "App/{action}", new { controller = "Home" },
+            //    new[] { "UrlsAndRoutes.Controllers" });
             routes.MapRoute("MyRoute", "{controller}/{action}", null,
-                new[] { "UrlsAndRoutes.Controllers" });
-            routes.MapRoute("MyOtherRoute", "App/{action}", new { controller = "Home" },
                 new[] { "UrlsAndRoutes.Controllers" });
         }
     }

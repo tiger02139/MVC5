@@ -8,5 +8,10 @@ namespace UrlsAndRoutes.Controllers {
             ViewBag.Action = "Index";
             return View("ActionName");
         }
+
+        public string Boo()
+        {
+            return "Boo!";
+        }
     }
 }
