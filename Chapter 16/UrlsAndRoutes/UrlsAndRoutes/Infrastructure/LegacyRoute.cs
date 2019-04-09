@@ -18,6 +18,7 @@ namespace UrlsAndRoutes.Infrastructure {
 
             string requestedURL =
                 httpContext.Request.AppRelativeCurrentExecutionFilePath;
+            //string requestedURL = httpContext.Request.RawUrl;
             if (urls.Contains(requestedURL, StringComparer.OrdinalIgnoreCase)) {
                 result = new RouteData(this, new MvcRouteHandler());
                 result.Values.Add("controller", "Legacy");
